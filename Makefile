@@ -6,59 +6,70 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/11/09 18:07:57 by annabrag         ###   ########.fr        #
+#    Updated: 2023/11/20 18:58:46 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 	= minitalk_utils.c
+SRC 		= utils.c
 
-OBJ	= $(SRC:.c=.o)
+OBJ		= $(SRC:.c=.o)
 
-CLIENT	= client
+SERVER		= server
 
-SERVER	= server
+CLIENT		= client
 
-INC	= minitalk.h
+INC		= minitalk.h
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror
+
+FSANITIZE	= -fsanitize=address -g3
 
 
 ##################### COLORS #####################
-GREEN		=	\e[38;5;118m
-YELLOW		=	\e[38;5;226m
-RESET		=	\e[0m
-_SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
-_INFO		=	[$(YELLOW)INFO$(RESET)]
+DEF_COLOR	=	\033[0;39m
+ORANGE		=	\033[0;33m
+GRAY		=	\033[0;90m
+RED		=	\033[0;91m
+GREEN		=	\033[1;92m
+YELLOW		=	\033[1;93m
+BLUE		=	\033[0;94m
+MAGENTA		=	\033[0;95m
+CYAN		=	\033[0;96m
+PINK		=	\033[38;2;255;182;193m
+WHITE		=	\033[0;97m
 ###################################################
 
 
-$(CLIENT): $(OBJ) $(INC)
-	cc $(CFLAGS) client.c $(OBJ) -o $(CLIENT)
-	@printf "$(_SUCCESS) client ready.\n"
-
 $(SERVER): $(OBJ) $(INC)
-	cc $(CFLAGS) server.c $(OBJ) -o $(SERVER)
-	@printf "$(_SUCCESS) server ready.\n"
+		@echo -en "$(PINK)[minitalk]:\t$(DEF_COLOR)"
+		cc $(CFLAGS) server.c $(OBJ) -o $(SERVER)
+		@echo -en "$(BLUE) server ready! 👌🏼$(DEF_COLOR)\n"
+
+$(CLIENT): $(OBJ) $(INC)
+		@echo -en "$(PINK)[minitalk]:\t$(DEF_COLOR)"
+		cc $(CFLAGS) client.c $(OBJ) -o $(CLIENT)
+		@echo -en "$(BLUE) client ready! 👌🏼$(DEF_COLOR)\n"
+
 
 .c.o:
-	cc $(CFLAGS) -c $^ -o $@
+		cc $(CFLAGS) -c $^ -o $@
 
-all: $(CLIENT) $(SERVER)
+all: 		$(SERVER) $(CLIENT)
 
 norm:
-	norminette $(SRC)
+		@clear
+		norminette $(SRC)
 
 clean:
-	rm -rf $(OBJ)
-	@printf "$(_INFO) client successfully removed.\n"
-	@printf "$(_INFO) server successfully removed.\n"
+		rm -rf $(OBJ)
+		@echo -en "$(PINK)[minitalk]:\tobject files$(DEF_COLOR)$(CYAN) successfully cleaned! $(DEF_COLOR)🧹\n"
 
 fclean: clean
-	rm -rf $(CLIENT)
-	@printf "$(_INFO) client successfully removed.\n"
-	@rm -rf $(SERVER)
-	@printf "$(_INFO) server successfully removed.\n"
+		rm -rf $(CLIENT) $(SERVER)
+		@find . -name ".DS_Store" -delete
+		@echo -en "$(PINK)[minitalk]:\texec files$(DEF_COLOR)$(CYAN) successfully cleaned! $(DEF_COLOR)🧹\n"
 
-re: fclean all
+re: 	fclean all
+		@echo -en "$(CYAN)Cleaned and rebuilt everything for$(DEF_COLOR)$(PINK)[minitalk]$(DEF_COLOR)! ✨\n"
 
-.PHONY: all clean fclean norm re
+.PHONY:	all clean fclean re norm
