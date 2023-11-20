@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 20:15:17 by panther           #+#    #+#             */
-/*   Updated: 2023/11/15 20:38:35 by panther          ###   ########.fr       */
+/*   Created: 2023/11/20 17:03:21 by annabrag          #+#    #+#             */
+/*   Updated: 2023/11/20 17:04:24 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int     ft_atoi(const char *str)
     }
     return (res * sign);
 }
+void    ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
 
 void    ft_putstr(char *str)
 {
@@ -45,14 +49,7 @@ void    ft_putstr(char *str)
     if (!str)
         return ;
     while (str[i])
-    {
-        write(1, str[i], 1);
-        i++;
-    }
-}
-void    ft_putchar(char c)
-{
-    write(1, &c, 1);
+	ft_putchar(str[i++]);
 }
 
 void    ft_putnbr(int n)
