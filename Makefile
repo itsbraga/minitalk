@@ -3,61 +3,93 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
+#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/11/23 01:39:03 by art3mis          ###   ########.fr        #
+#    Updated: 2023/11/24 19:50:53 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-####################### BASICS #######################
+############################# COLORS #############################
 
-SRC 		= utils.c
-OBJ			= $(SRC:.c=.o)
+RESET		:=	\e[0m
+BOLD		:=	\e[1m
+DIM		:=	\e[2m
+ITAL		:=	\e[3m
+UNDERLINE	:=	\e[4m
 
-SERVER		= server
-CLIENT		= client
+BLACK		:=	\e[30m
+GRAY		:=	\e[90m
+RED		:=	\e[31m
+GREEN		:=	\e[32m
+YELLOW		:=	\e[33m
+ORANGE		:=	\e[38;5;208m
+BLUE		:=	\e[34m
+PURPLE		:=	\e[35m
+PINK		:=	\033[38;2;255;182;193m
+CYAN		:=	\e[36m
 
-INC			= minitalk.h
-
-CFLAGS 		= -Wall -Wextra -Werror
-FSANITIZE	= -fsanitize=address -g3
-
-
-####################### SOURCES #######################
-
-$(SERVER): $(OBJ) $(INC)
-			@echo -e -n "$(PINK)[minitalk]:\t$(RESET)"
-			@cc $(CFLAGS) server.c $(OBJ) -o $(SERVER)
-			@echo -e -n "$(BLUE) server ready! 👌🏼$(RESET)\n"
-
-$(CLIENT): $(OBJ) $(INC)
-			@echo -e -n "$(PINK)[minitalk]:\t$(RESET)"
-			@cc $(CFLAGS) client.c $(OBJ) -o $(CLIENT)
-			@echo -e -n "$(BLUE) client ready! 👌🏼$(RESET)\n"
+BRIGHT_BLACK	:=	\e[90m
+LIGHT_GRAY	:=	\e[37m
+BRIGHT_RED	:=	\e[91m
+BRIGHT_GREEN	:=	\e[92m
+BRIGHT_YELLOW	:=	\e[93m
+BRIGHT_BLUE	:=	\e[94m
+BRIGHT_PURPLE	:=	\e[95m
+BRIGHT_CYAN	:=	\e[96m
 
 
-####################### RULES #######################
+############################# BASICS #############################
+
+SRC 		=	utils.c
+OBJ		=	$(SRC:.c=.o)
+
+SERVER		=	server
+CLIENT		=	client
+
+INC		=	minitalk.h
+
+CC		=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+FSANITIZE	=	-fsanitize=address -g3
+
+
+############################# SOURCES #############################
+
+$(SERVER):	$(OBJ) $(INC)
+			@printf "$(PINK)[minitalk]:\t$(RESET)"
+			@$(CC) $(CFLAGS) server.c $(OBJ) -o $(SERVER)
+			@printf "$(BLUE) server ready! 👌🏼$(RESET)\n"
+
+$(CLIENT):	$(OBJ) $(INC)
+			@printf "$(PINK)[minitalk]:\t$(RESET)"
+			@$(CC) $(CFLAGS) client.c $(OBJ) -o $(CLIENT)
+			@printf "$(BLUE) client ready! 👌🏼$(RESET)\n"
+
+
+############################## RULES ###############################
 
 .c.o:
-			cc $(CFLAGS) -c $^ -o $@
+		$(CC) $(CFLAGS) -c $^ -o $@
 
 all: 		$(SERVER) $(CLIENT)
 
+san:		$(FSANITIZE)
+
 clean:
 			@rm -rf $(OBJ)
-			@echo -e -n "$(PINK)[minitalk]:\tobject files successfully cleaned! $(RESET)🧹\n"
+			@printf "$(PINK)[minitalk]:\tobject files : cleaned! $(RESET)🐞\n\n"
 
-fclean: clean
+fclean:		clean
 			@rm -rf $(CLIENT) $(SERVER)
 			@find . -name ".DS_Store" -delete
-			@echo -e -n "$(PINK)[minitalk]:\texec files successfully cleaned! $(RESET)🧹\n"
+			@printf "$(PURPLE)[minitalk]:\texec files : cleaned! $(RESET)🦋\n\n"
 
-re: 	fclean all
-			@echo -e -n "$(CYAN)Cleaned and rebuilt everything for$(RESET)$(PINK) [minitalk]$(RESET)! ✨\n"
+re:		fclean all
+			@printf "\n\n✨ $(BOLD)$(YELLOW)Cleaning and rebuilding done! $(RESET)✨\n"
 
 norm:
 			@clear
 			@norminette $(SRC) $(INC)
 
-.PHONY:	all clean fclean re norm
+.PHONY:		all clean fclean re norm

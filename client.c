@@ -3,14 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:01:24 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 03:13:54 by art3mis          ###   ########.fr       */
+/*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
+/*   Updated: 2023/11/24 19:52:39 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-
-int     main(int argc, char **argv);
