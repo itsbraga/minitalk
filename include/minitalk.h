@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:50:15 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/24 19:56:13 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:12:13 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <unistd.h> // write, pause, sleep, usleep
 #include <sys/types.h> // getpid
 
-#include "libft/include/libft.h" // bonus part
+#include "../libft/include/libft.h" // bonus part
+#include "../libft/include/ft_printf.h" // bonus part
 
 
 // int     ft_atoi(const char *str);

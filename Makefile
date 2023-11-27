@@ -6,11 +6,11 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/11/24 19:50:53 by annabrag         ###   ########.fr        #
+#    Updated: 2023/11/27 18:00:45 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-############################# COLORS #############################
+############################## COLORS ##############################
 
 RESET		:=	\e[0m
 BOLD		:=	\e[1m
@@ -39,57 +39,78 @@ BRIGHT_PURPLE	:=	\e[95m
 BRIGHT_CYAN	:=	\e[96m
 
 
-############################# BASICS #############################
-
-SRC 		=	utils.c
-OBJ		=	$(SRC:.c=.o)
+############################## BASICS ##############################
 
 SERVER		=	server
 CLIENT		=	client
-
-INC		=	minitalk.h
-
+LIBFT		=	libft
+INC		=	-I include/
 CC		=	cc
 CFLAGS		=	-Wall -Wextra -Werror
 FSANITIZE	=	-fsanitize=address -g3
+RM		=	rm -rf
 
 
-############################# SOURCES #############################
+############################## SOURCES ##############################
 
-$(SERVER):	$(OBJ) $(INC)
-			@printf "$(PINK)[minitalk]:\t$(RESET)"
-			@$(CC) $(CFLAGS) server.c $(OBJ) -o $(SERVER)
-			@printf "$(BLUE) server ready! 👌🏼$(RESET)\n"
-
-$(CLIENT):	$(OBJ) $(INC)
-			@printf "$(PINK)[minitalk]:\t$(RESET)"
-			@$(CC) $(CFLAGS) client.c $(OBJ) -o $(CLIENT)
-			@printf "$(BLUE) client ready! 👌🏼$(RESET)\n"
+SRC_DIR		=	src/
+CLIENT_FILE	=	client
+SRV_FILE	=	server
+OBJ_DIR		=	obj/
 
 
-############################## RULES ###############################
+################### COMBINE DIRECTORIES AND FILES ###################
 
-.c.o:
-		$(CC) $(CFLAGS) -c $^ -o $@
+SRC_CL 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(CLIENT_FILE)))
+OBJ_CL 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLIENT_FILE)))
+
+SRC_SRV		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRV_FILE)))
+OBJ_SRV		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRV_FILE)))
+
+
+############################### RULES ##############################
+
+$(SERVER):	$(OBJ_SRV)
+			@printf "$(BLUE)[minitalk]:\t$(RESET)"
+			@$(CC) $(CFLAGS) $(OBJ_SRV) $(INC) libft.a -o $(SERVER)
+			@printf "$(BRIGHT_CYAN) server ready! $(RESET)👌🏼\n\n"
+
+$(CLIENT):	$(OBJ_CLIENT)
+			@printf "$(BLUE)[minitalk]:\t$(RESET)"
+			@$(CC) $(CFLAGS) $(OBJ_CLIENT) $(INC) libft.a -o $(CLIENT)
+			@printf "$(BRIGHT_CYAN) client ready! $(RESET)👌🏼\n"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+			@mkdir -p $(dir $@)
+			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+build:
+		@make -C $(LIBFT)
+		@cp $(LIBFT)/libft.a .
+		@make all
 
 all: 		$(SERVER) $(CLIENT)
 
 san:		$(FSANITIZE)
 
 clean:
-			@rm -rf $(OBJ)
-			@printf "$(PINK)[minitalk]:\tobject files : cleaned! $(RESET)🐞\n\n"
+			@$(RM) $(OBJ_DIR)
+			@$(RM) $(LIBFT)/obj/
+			@printf "$(BRIGHT_GREEN)[minitalk]: object files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)😸\n\n"
 
 fclean:		clean
-			@rm -rf $(CLIENT) $(SERVER)
+			@$(RM) $(CLIENT) $(SERVER)
+			@$(RM) $(LIBFT)/libft.a
+			@$(RM) libft.a
 			@find . -name ".DS_Store" -delete
-			@printf "$(PURPLE)[minitalk]:\texec files : cleaned! $(RESET)🦋\n\n"
+			@printf "$(PURPLE)[LIBFT]: exec. files $(RESET)$(BOLD)\t\t=> successfully cleaned! $(RESET)🦋\n\n"
+			@printf "$(BLUE)[minitalk]: exec. files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)🥸\n\n"
 
 re:		fclean all
 			@printf "\n\n✨ $(BOLD)$(YELLOW)Cleaning and rebuilding done! $(RESET)✨\n"
 
 norm:
 			@clear
-			@norminette $(SRC) $(INC)
+			@norminette $(SRC) $(INC) $(LIBFT)
 
 .PHONY:		all clean fclean re norm

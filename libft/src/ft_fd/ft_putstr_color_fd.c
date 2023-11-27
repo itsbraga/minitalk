@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_putstr_color_fd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/24 19:52:39 by annabrag         ###   ########.fr       */
+/*   Created: 2023/11/27 18:44:30 by annabrag          #+#    #+#             */
+/*   Updated: 2023/11/27 18:45:52 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../../include/libft.h"
+
+void	ft_putstr_color_fd(char *color, char *s, int fd)
+{
+	ft_putstr_fd(color, fd);
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd(RESET, fd);
+}

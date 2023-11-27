@@ -6,11 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:03:21 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/20 17:04:24 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:38:36 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "include/minitalk.h"
 
 int     ft_atoi(const char *str)
 {

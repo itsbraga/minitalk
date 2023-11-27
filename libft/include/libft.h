@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:44:52 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/24 18:26:44 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:47:52 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+# include "colors.h"
 
 typedef struct s_list
 {
