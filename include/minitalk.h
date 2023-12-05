@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:50:15 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/27 18:12:13 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:39:42 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 #include "../libft/include/ft_printf.h" // bonus part
 
 
-// int     ft_atoi(const char *str);
-// void    ft_putchar(char c);
-// void    ft_putstr(char *str);
-// void    ft_putnbr(int n);
+void	send_bits(int pid, char c);
 
 #endif
