@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strisnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 11:55:04 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/07 19:52:21 by annabrag         ###   ########.fr       */
+/*   Created: 2023/12/07 19:23:06 by annabrag          #+#    #+#             */
+/*   Updated: 2023/12/07 19:45:58 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
-int	ft_isdigit(int c)
+/*	Description:
+	Cette fonction vérifie si la chaîne de caractères 's'
+	représente une valeur numérique.
+
+	Valeur de retour:
+	-	1 si c'est une chaîne de caractères numériques.
+	-	0 si ce n'en est pas.
+*/
+
+int	ft_strisnum(char *s)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = 0;
+	if (s[i] == '-')
+		i++;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

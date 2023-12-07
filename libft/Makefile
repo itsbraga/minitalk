@@ -6,7 +6,7 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 11:07:10 by annabrag          #+#    #+#              #
-#    Updated: 2023/11/27 18:01:20 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/07 19:50:22 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ FT_FD_DIR	= 	ft_fd/
 FT_FD_FILES	= 	ft_putchar_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
-			ft_putstr_fd.c
+			ft_putstr_fd.c \
+			ft_putstr_color_fd.c
 
 FT_IS_DIR 	= 	ft_is/
 FT_IS_FILES	= 	ft_isalpha.c \
@@ -88,7 +89,8 @@ FT_STR_FILES	=	ft_strlen.c \
 			ft_strtrim.c \
 			ft_split.c \
 			ft_strmapi.c \
-			ft_striteri.c
+			ft_striteri.c \
+			ft_strisnum.c
 
 FT_TO_DIR	=	ft_to/
 FT_TO_FILES	=	ft_tolower.c \

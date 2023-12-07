@@ -6,12 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/06 18:25:19 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:05:42 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
-// stderr : fd 2
 
 void	send_bits(int pid, char c)
 {
@@ -28,38 +27,24 @@ void	send_bits(int pid, char c)
 	}
 }
 
-void	handler_sigusr(int signum)
-{
-	int	end_char;
-
-	end_char = 0;
-	if (signum == SIGUSR1)
-		end_char = send_bits();
-	if (signum == SIGUSR2)
-	{
-		
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	int	pid;
 	int	i;
 
 	i = 0;
-	if (argc != 3)
+	if (argc == 3 && ft_strisnum(argv[1]))
+	{
+		pid = ft_atoi(argv[1]);
+		while (argv[2][i])
+			send_bits(pid, argv[2][i++]);
+	}
+	else
 	{
 		ft_printf(RED"Error: invalid arguments.\nRESET");
 		ft_printf(YELLOW
 		"Try this format: ./client <pid> <message>\nRESET");
 		return (1);
 	}
-	pid = getpid();
-	signal(SIGUSR1, handler_sigusr);
-	signal(SIGUSR2, handler_sigusr);
-	while (1)
-	{
-		send_bits(pid, argv[2][i]);
-		i++;
-	}
+	return (0);
 }

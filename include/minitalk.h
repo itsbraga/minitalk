@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:50:15 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/05 19:39:42 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:03:37 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 
 
 void	send_bits(int pid, char c);
+void	handler_sigusr(int signal);
 
 #endif
