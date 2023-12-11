@@ -6,7 +6,7 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/11 22:36:19 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/11 23:51:45 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");
 		ft_printf(YELLOW
-		"Try this instead: ./client <PID> <MESSAGE>\n");
+		"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
 		return (1);
 	}
 	return (0);
