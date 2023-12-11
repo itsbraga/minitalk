@@ -6,13 +6,13 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 21:53:26 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/11 22:13:13 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-void	sigusr_handler(int signal)
+void	handler(int signal)
 {
 	static int	bit; // pour vérifier combien de bits ont été reçus
 	static char	c; // pour stocker la valeur du caractère
@@ -49,8 +49,8 @@ int	main(int argc, char **argv)
 	}
 	pid = getpid();
 	pid_display(pid);
-	signal(SIGUSR1, sigusr_handler);
-	signal(SIGUSR2, sigusr_handler);
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
 	while (argc == 1)
 		pause();
 	return (0);

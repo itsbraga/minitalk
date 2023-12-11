@@ -6,7 +6,7 @@
 #    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/11 21:54:51 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/11 22:14:27 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,8 @@ OBJ_DIR		=	obj/
 
 OBJ_CL 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLIENT_FILE)))
 OBJ_SRV		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRV_FILE)))
-OBJ_B_CL	= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(B_CLIENT_FILE)))
-OBJ_B_SRV	= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(B_SRV_FILE)))
+OBJ_B_CL	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_CLIENT_FILE)))
+OBJ_B_SRV	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRV_FILE)))
 
 
 ############################### RULES ##############################

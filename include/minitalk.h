@@ -6,7 +6,7 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:50:15 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 21:52:13 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/11 22:12:35 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	send_bits(pid_t pid, char c);
 void	send_message(pid_t pid, char *msg);
-void	sigusr_handler(int signal);
+void	handler(int signal);
 void	pid_display(pid_t pid);
 
 #endif
