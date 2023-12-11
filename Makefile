@@ -6,7 +6,7 @@
 #    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/11 22:18:14 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/11 22:27:09 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,9 +93,9 @@ $(SERVER):	$(OBJ_SRV)
 			@$(CC) $(CFLAGS) $(OBJ_SRV) $(INC) libft.a -o $(SERVER)
 			@printf "$(BRIGHT_CYAN) server ready! $(RESET)👌🏼\n\n"
 
-$(CLIENT):	$(OBJ_CLIENT)
+$(CLIENT):	$(OBJ_CL)
 			@printf "$(BLUE)[minitalk]:\t$(RESET)"
-			@$(CC) $(CFLAGS) $(OBJ_CLIENT) $(INC) libft.a -o $(CLIENT)
+			@$(CC) $(CFLAGS) $(OBJ_CL) $(INC) libft.a -o $(CLIENT)
 			@printf "$(BRIGHT_CYAN) client ready! $(RESET)👌🏼\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
