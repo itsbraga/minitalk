@@ -6,7 +6,7 @@
 #    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/11 22:14:27 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/11 22:16:17 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,7 +127,7 @@ clean:
 			@printf "$(BRIGHT_GREEN)[minitalk]: object files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)😸\n\n"
 
 fclean:		clean
-			@$(RM) $(CLIENT) $(SERVER)
+			@$(RM) $(CLIENT) $(SERVER) $(BONUS_CL) $(BONUS_SRV)
 			@$(RM) $(LIBFT)/libft.a
 			@$(RM) libft.a
 			@find . -name ".DS_Store" -delete
