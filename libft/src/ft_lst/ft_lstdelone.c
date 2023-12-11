@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:41:16 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:34:48 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
 /*	Description:
-	Cette fonction supprime un seul élément de la liste 'lst' en libérant la
-	mémoire occupée par son contenu et par l'élément lui-même, en utilisant
-	la fonction de suppression fournie 'del'.
+	Cette fonction supprime un seul élément de la liste
+	'lst' en libérant la mémoire occupée par son contenu
+	et par l'élément lui-même, en utilisant la fonction
+	de suppression fournie 'del'.
 
 	Valeur de retour:
 	Aucune.

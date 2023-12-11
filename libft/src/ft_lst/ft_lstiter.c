@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:56:05 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:35:05 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
 /*	Description:
-	Cette fonction applique la fonction 'f' à chaque élément de la liste
-	chaînée 'lst' permettant ainsi de traiter tous les éléments de la liste
-	d'une manière spécifique définie par la fonction f.
+	Cette fonction applique la fonction 'f' à chaque
+	élément de la liste chaînée 'lst' permettant ainsi
+	de traiter tous les éléments de la liste d'une
+	manière spécifique définie par la fonction f.
 
 	Valeur de retour:
 	Aucune.

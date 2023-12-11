@@ -6,7 +6,7 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:00:20 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/11 21:47:26 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char	*dstc;
 	unsigned char	*srcc;
-	size_t			i;
 
 	if (!dst && !src)
 		return (NULL);
-	i = 0;
 	if (src < dst)
 	{
 		dstc = (unsigned char *)dst + (n - 1);

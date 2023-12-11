@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:39:24 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:34:13 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
 /*	Description:
-	Cette fonction ajoute un nouvel élément au début d'une liste chaînée en
-	mettant à jour les pointeurs appropriés pour maintenir la cohérence de
-	la liste.
+	Cette fonction ajoute un nouvel élément au début
+	d'une liste chaînée en mettant à jour les pointeurs
+	appropriés pour maintenir la cohérence de la liste.
 
 	Valeur de retour:
 	Aucune.

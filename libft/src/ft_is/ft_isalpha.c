@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:40:10 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:46:14 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
 /*	Description:
-	Cette fonction permet de tester si un caractère est alphabétique ou non
-	(majuscules et minuscules).
+	Cette fonction permet de tester si un caractère
+	est alphabétique ou non (majuscules et minuscules).
 	
 	Valeur de retour:
-	- Valeur positive non nulle si c'est un caractère alphabétique
-	- 0 si ce n'est pas un caractère alphabétique
+	-	Valeur positive non nulle si c'est un
+		caractère alphabétique.
+	-	0 si ce n'est pas un caractère alphabétique.
 */
 
 int	ft_isalpha(int c)

@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:52:34 by annabrag          #+#    #+#             */
-/*   Updated: 2023/11/23 02:36:47 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:34:22 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
 /*	Description:
-	Cette fonction permet de vider une liste chaînée en supprimant tous ses
-	éléments un par un à l'aide de la fonction de suppression fournie 'del'.
+	Cette fonction permet de vider une liste chaînée en
+	supprimant tous ses éléments un par un à l'aide de
+	la fonction de suppression fournie 'del'.
 
 	Valeur de retour:
 	Aucune.

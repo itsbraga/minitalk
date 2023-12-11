@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:50:15 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 21:52:13 by art3mis          ###   ########.fr       */
+/*   Created: 2023/12/11 21:19:09 by art3mis           #+#    #+#             */
+/*   Updated: 2023/12/11 21:51:53 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 #include "../libft/include/libft.h"
 #include "../libft/include/ft_printf.h"
 
-void	send_bits(pid_t pid, char c);
+void    confirm_receipt(int signal);
+void    send_bits(pid_t pid, char c);
 void	send_message(pid_t pid, char *msg);
-void	sigusr_handler(int signal);
-void	pid_display(pid_t pid);
+void	sigusr_handler(int signal, siginfo_t *info, void *context);
+void    pid_display(pid_t pid);
 
 #endif

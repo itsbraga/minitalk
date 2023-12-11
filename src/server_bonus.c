@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 21:53:26 by art3mis          ###   ########.fr       */
+/*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
+/*   Updated: 2023/12/11 21:53:14 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-void	sigusr_handler(int signal)
+void	sigusr_handler(int signal, siginfo_t *info, void *context)
 {
-	static int	bit; // pour vérifier combien de bits ont été reçus
-	static char	c; // pour stocker la valeur du caractère
+	static int	bit;
+	static char	c;
+	pid_t		pid;
 
+	(void)context;
+	pid = 0;
+	if (info->si_pid)
+		pid = info->si_pid;
 	if (signal == SIGUSR1)
 		c |= (1 << bit);
 	bit++;
-	if (bit == 8) // Si bits = 8, on imprime le caractère stocké et on initialise la variable statique.
+	if (bit == 8)
 	{
 		ft_putchar_fd(c, 1);
 		bit = 0;
 		c = 0;
+        kill(pid, SIGUSR2);
 	}
 }
 
@@ -38,7 +44,8 @@ void	pid_display(pid_t pid)
 
 int	main(int argc, char **argv)
 {
-	pid_t	pid;
+	pid_t				pid;
+	struct sigaction	sa;
 	
 	(void)argv;
 	if (argc != 1)
@@ -49,9 +56,14 @@ int	main(int argc, char **argv)
 	}
 	pid = getpid();
 	pid_display(pid);
-	signal(SIGUSR1, sigusr_handler);
-	signal(SIGUSR2, sigusr_handler);
-	while (argc == 1)
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
+	sa.sa_sigaction = &sigusr_handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
 		pause();
 	return (0);
 }

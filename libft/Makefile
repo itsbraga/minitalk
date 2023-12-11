@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
+#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 11:07:10 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/07 19:50:22 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/11 21:46:37 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -172,7 +172,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 # link .o files to the library
 $(NAME):	$(OBJ)
 			@$(LIBC) $(NAME) $(OBJ)
-			@printf "\n$(RESET)$(PINK)[LIBFT]$(RESET), $(BLUE)[GET_NEXT_LINE]$(RESET), $(BRIGHT_PURPLE)[FT_PRINTF]$(RESET) successfully compiled!$(RESET)\n\n"
+			@printf "\n$(RESET)$(PINK)[LIBFT]$(RESET), $(BLUE)[GET_NEXT_LINE]$(RESET), $(BRIGHT_PURPLE)[FT_PRINTF]$(RESET) successfully compiled!$(RESET)"
 
 all:		$(NAME)
 
