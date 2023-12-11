@@ -6,7 +6,7 @@
 #    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/11 22:27:09 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/11 22:33:08 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,12 +110,12 @@ bonus:
 allbonus:	$(BONUS_SRV) $(BONUS_CL)
 
 $(BONUS_SRV):	$(OBJ_B_SRV)
-				@printf "$(BLUE)[minitalk - BONUS]:\t$(RESET)"
+				@printf "$(BLUE)[minitalk BONUS]:\t$(RESET)"
 				@$(CC) $(CFLAGS) $(OBJ_B_SRV) $(INC) libft.a -o $(BONUS_SRV)
 				@printf "$(BRIGHT_CYAN) server ready to run the bonuses! $(RESET)👌🏼\n\n"
 
 $(BONUS_CL):	$(OBJ_B_CL)
-				@printf "$(BLUE)[minitalk - BONUS]:\t$(RESET)"
+				@printf "$(BLUE)[minitalk BONUS]:\t$(RESET)"
 				@$(CC) $(CFLAGS) $(OBJ_B_CL) $(INC) libft.a -o $(BONUS_CL)
 				@printf "$(BRIGHT_CYAN) client ready to run the bonuses! $(RESET)👌🏼\n"
 
