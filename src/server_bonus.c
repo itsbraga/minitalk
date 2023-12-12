@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/11 22:36:05 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/12 21:56:47 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sigusr_handler(int signal, siginfo_t *info, void *context)
 		ft_putchar_fd(c, 1);
 		bit = 0;
 		c = 0;
-        kill(pid, SIGUSR2);
+		kill(pid, SIGUSR2);
 	}
 }
 
@@ -44,7 +44,7 @@ void	pid_display(pid_t pid)
 
 int	main(int argc, char **argv)
 {
-	pid_t				pid;
+	pid_t			pid;
 	struct sigaction	sa;
 	
 	(void)argv;

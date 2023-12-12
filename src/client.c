@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 23:58:36 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/12 18:07:20 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
-
-// void	send_bits(pid_t pid, char *str)
-// {
-// 	int	bit;
-// 	int	i;
-
-// 	bit = 0;
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	{
-// 		while (bit < 8)
-// 		{
-// 			if ((str[i] & (1 << bit)) != 0)
-// 				kill(pid, SIGUSR1);
-// 			else
-// 				kill(pid, SIGUSR2);
-// 			usleep(100);
-// 			bit++;
-// 		}
-// 		bit = 0;
-// 		i++;
-// 	}
-// }
 
 void	send_bits(pid_t pid, char c)
 {
@@ -74,7 +51,8 @@ int	main(int argc, char **argv)
 	if (argc == 3 && ft_strisnum(argv[1]) && argv[2][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
-		send_message(pid, argv[2]);
+		if (pid > 0)
+			send_message(pid, argv[2]);
 	}
 	else
 	{
