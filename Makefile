@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
+#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/11 22:33:08 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/13 21:07:19 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,20 +45,20 @@ SERVER		=	server
 CLIENT		=	client
 BONUS_CL	=	client_bonus
 BONUS_SRV	=	server_bonus
-LIBFT		=	libft
-INC		=	-I include/
+LIBFT_PATH	=	libft
 CC		=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -I
+INC		=	include/
 FSANITIZE	=	-fsanitize=address -g3
 RM		=	rm -rf
 
 
 ############################## SOURCES ##############################
 
-CLIENT_FILE		=	client
-SRV_FILE		=	server
+CLIENT_FILE	=	client
+SRV_FILE	=	server
 B_CLIENT_FILE	=	client_bonus
-B_SRV_FILE		=	server_bonus
+B_SRV_FILE	=	server_bonus
 
 
 ################### COMBINE DIRECTORIES AND FILES ###################
@@ -81,64 +81,69 @@ OBJ_B_SRV	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRV_FILE)))
 
 ############################### RULES ##############################
 
-build:
-		@make -C $(LIBFT)
-		@cp $(LIBFT)/libft.a .
-		@make all
-
-all: 		$(SERVER) $(CLIENT)
-
 $(SERVER):	$(OBJ_SRV)
 			@printf "$(BLUE)[minitalk]:\t$(RESET)"
-			@$(CC) $(CFLAGS) $(OBJ_SRV) $(INC) libft.a -o $(SERVER)
+			@$(CC) $(CFLAGS) $(INC) $(OBJ_SRV) libft.a -o $(SERVER)
 			@printf "$(BRIGHT_CYAN) server ready! $(RESET)👌🏼\n\n"
 
 $(CLIENT):	$(OBJ_CL)
 			@printf "$(BLUE)[minitalk]:\t$(RESET)"
-			@$(CC) $(CFLAGS) $(OBJ_CL) $(INC) libft.a -o $(CLIENT)
+			@$(CC) $(CFLAGS) $(INC) $(OBJ_CL) libft.a -o $(CLIENT)
 			@printf "$(BRIGHT_CYAN) client ready! $(RESET)👌🏼\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@mkdir -p $(dir $@)
+			@printf "$(ITAL)$(ORANGE)Compiling: $(RESET)$(ITAL)$<\n"
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-bonus:
-		@make -C $(LIBFT)
-		@cp $(LIBFT)/libft.a .
-		@make allbonus
+build:
+		@make -C $(LIBFT_PATH)
+		@cp $(LIBFT_PATH)/libft.a .
+		@make all
 
-allbonus:	$(BONUS_SRV) $(BONUS_CL)
-
-$(BONUS_SRV):	$(OBJ_B_SRV)
-				@printf "$(BLUE)[minitalk BONUS]:\t$(RESET)"
-				@$(CC) $(CFLAGS) $(OBJ_B_SRV) $(INC) libft.a -o $(BONUS_SRV)
-				@printf "$(BRIGHT_CYAN) server ready to run the bonuses! $(RESET)👌🏼\n\n"
-
-$(BONUS_CL):	$(OBJ_B_CL)
-				@printf "$(BLUE)[minitalk BONUS]:\t$(RESET)"
-				@$(CC) $(CFLAGS) $(OBJ_B_CL) $(INC) libft.a -o $(BONUS_CL)
-				@printf "$(BRIGHT_CYAN) client ready to run the bonuses! $(RESET)👌🏼\n"
+all: 		$(SERVER) $(CLIENT)
 
 san:		$(FSANITIZE)
 
 clean:
-			@$(RM) $(OBJ_DIR)
-			@make clean -C $(LIBFT)
-			@printf "$(BRIGHT_GREEN)[minitalk]: object files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)😸\n\n"
+		@$(RM) $(OBJ_DIR)
+		@make clean -C $(LIBFT_PATH)
+		@printf "$(BRIGHT_GREEN)[minitalk]: object files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)😸\n\n"
 
 fclean:		clean
 			@$(RM) $(CLIENT) $(SERVER) $(BONUS_CL) $(BONUS_SRV)
-			@$(RM) $(LIBFT)/libft.a
+			@$(RM) $(LIBFT_PATH)/libft.a
 			@$(RM) libft.a
 			@find . -name ".DS_Store" -delete
 			@printf "$(PURPLE)[LIBFT]: exec. files $(RESET)$(BOLD)\t\t=> successfully cleaned! $(RESET)🦋\n\n"
 			@printf "$(BLUE)[minitalk]: exec. files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)🥸\n\n"
 
-re:		fclean all
+re:		fclean build all
 			@printf "\n\n✨ $(BOLD)$(YELLOW)Cleaning and rebuilding done! $(RESET)✨\n"
 
 norm:
 			@clear
-			@norminette $(SRC) $(INC) $(LIBFT)
+			@norminette $(SRC_DIR) $(INC) $(LIBFT_PATH) | grep -v Norme -B1 || true
 
-.PHONY:		all clean fclean re bonus norm
+
+############################### BONUS ##############################
+
+$(BONUS_SRV):	$(OBJ_B_SRV)
+			@printf "$(PINK)[minitalk BONUS]:\t$(RESET)"
+			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_SRV) libft.a -o $(BONUS_SRV)
+			@printf "$(BRIGHT_CYAN) server ready to run the bonuses! $(RESET)👌🏼\n\n"
+
+$(BONUS_CL):	$(OBJ_B_CL)
+			@printf "$(PINK)[minitalk BONUS]:\t$(RESET)"
+			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_CL) libft.a -o $(BONUS_CL)
+			@printf "$(BRIGHT_CYAN) client ready to run the bonuses! $(RESET)👌🏼\n"
+
+bonus:
+		@make -C $(LIBFT_PATH)
+		@cp $(LIBFT_PATH)/libft.a .
+		@make allbonus
+
+allbonus:	$(BONUS_SRV) $(BONUS_CL)
+
+
+.PHONY:		build all clean fclean re bonus norm

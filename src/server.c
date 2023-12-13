@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/11 22:34:12 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:18:21 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	handler(int signal)
 {
-	static int	bit; // pour vérifier combien de bits ont été reçus
-	static char	c; // pour stocker la valeur du caractère
-
+	static int	bit;
+	static char	c;
+	
 	if (signal == SIGUSR1)
 		c |= (1 << bit);
 	bit++;
-	if (bit == 8) // Si bits = 8, on imprime le caractère stocké et on initialise la variable statique.
+	if (bit == 8)
 	{
 		ft_putchar_fd(c, 1);
 		bit = 0;
@@ -28,18 +28,16 @@ void	handler(int signal)
 	}
 }
 
-void	pid_display(pid_t pid)
+void	pid_display(void)
 {
-	ft_putstr_color_fd(BLUE, "PID ->	", 1);
-	ft_putnbr_fd(pid, 1);
+	ft_putstr_color_fd(BOLD PURPLE, "PID ->	", 1);
+	ft_printf(BOLD PURPLE"%d", getpid());
 	ft_putchar_fd('\n', 1);
-	ft_putstr_color_fd(PURPLE, "Waiting for a message...\n", 1);
+	ft_putstr_color_fd(PINK, "Pending...\n", 1);
 }
 
 int	main(int argc, char **argv)
 {
-	pid_t	pid;
-	
 	(void)argv;
 	if (argc != 1)
 	{
@@ -47,11 +45,12 @@ int	main(int argc, char **argv)
 		ft_printf(YELLOW"Try this instead: ./server\n");
 		return (0);
 	}
-	pid = getpid();
-	pid_display(pid);
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	while (argc == 1)
+	pid_display();
+	while (1)
+	{
+		signal(SIGUSR1, handler);
+		signal(SIGUSR2, handler);
 		pause();
+	}
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/12 21:56:47 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/13 21:44:23 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 
 void	sigusr_handler(int signal, siginfo_t *info, void *context)
 {
@@ -30,23 +30,22 @@ void	sigusr_handler(int signal, siginfo_t *info, void *context)
 		ft_putchar_fd(c, 1);
 		bit = 0;
 		c = 0;
-		kill(pid, SIGUSR2);
 	}
+	kill(pid, SIGUSR2);
 }
 
-void	pid_display(pid_t pid)
+void	pid_display(void)
 {
-	ft_putstr_color_fd(BLUE, "PID ->	", 1);
-	ft_putnbr_fd(pid, 1);
+	ft_putstr_color_fd(BOLD PURPLE, "PID ->	", 1);
+	ft_printf(BOLD PURPLE"%d", getpid());
 	ft_putchar_fd('\n', 1);
-	ft_putstr_color_fd(PURPLE, "Waiting for a message...\n", 1);
+	ft_putstr_color_fd(PINK, "Pending...\n", 1);
 }
 
 int	main(int argc, char **argv)
 {
-	pid_t			pid;
 	struct sigaction	sa;
-	
+
 	(void)argv;
 	if (argc != 1)
 	{
@@ -54,16 +53,15 @@ int	main(int argc, char **argv)
 		ft_printf(YELLOW"Try this instead: ./server\n");
 		return (0);
 	}
-	pid = getpid();
-	pid_display(pid);
-	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
+	pid_display();
 	sa.sa_sigaction = &sigusr_handler;
-	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
 	while (1)
+	{
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
 		pause();
+	}
 	return (0);
 }

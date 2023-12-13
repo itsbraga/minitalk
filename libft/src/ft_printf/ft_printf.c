@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:58:27 by panther           #+#    #+#             */
-/*   Updated: 2023/11/24 17:09:53 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:44:59 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_printf(const char *format, ...)
 // int	main(void)
 // {
 // 	char	*test;
-
+//
 // 	test = "Check address";
 // 	puts("What my function does:\n");
 // 	printf("printf ret=%d\n", ft_printf("%c\n%s\n%p\n%d\n%i\n",
@@ -72,7 +72,7 @@ int	ft_printf(const char *format, ...)
 // 	printf("printf ret=%d\n", ft_printf("%x\n%X\n", 42, 10256465));
 // 	printf("printf ret=%d\n", ft_printf(0));
 // 	printf("printf ret=%d\n", ft_printf(NULL));
-	
+//	
 // 	puts("\n\nTrue f:\n");
 // 	printf("printf ret=%d\n", printf("%c\n%s\n%p\n%d\n%i\n",
 // 						'a', "Møme", test, 42, -2147483647));
