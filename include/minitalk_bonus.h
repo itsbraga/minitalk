@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 21:19:09 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/13 21:19:33 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:26:28 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 void	confirm_receipt(int signal);
 void	send_bits(pid_t pid, char c);
 void	send_message(pid_t pid, char *msg);
-void	sigusr_handler(int signal, siginfo_t *info, void *context);
+void	sig_handler(int sig, siginfo_t *info, void __attribute__((unused))*s);
 void	pid_display(void);
 
 #endif

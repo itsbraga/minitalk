@@ -6,23 +6,21 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/14 15:28:55 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:42:53 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk_bonus.h"
 
-void	sigusr_handler(int signal, siginfo_t *info, void *context)
+void	sig_handler(int sig, siginfo_t *info, void __attribute__((unused))*s)
 {
-	static int	bit;
+	static int	bit = 0;
 	static char	c;
-	pid_t		pid;
+	// pid_t		pid;
 
-	(void)context;
-	pid = 0;
-	if (info->si_pid)
-		pid = info->si_pid;
-	if (signal == SIGUSR1)
+	// pid = info->si_pid;
+	(void)info;
+	if (sig == SIGUSR1)
 		c |= (1 << bit);
 	bit++;
 	if (bit == 8)
@@ -31,14 +29,13 @@ void	sigusr_handler(int signal, siginfo_t *info, void *context)
 		bit = 0;
 		c = 0;
 	}
-	kill(pid, SIGUSR2);
+	kill(info->si_pid, SIGUSR1);
 }
 
 void	pid_display(void)
 {
 	ft_putstr_color_fd(BOLD PURPLE, "PID ->	", 1);
-	ft_printf(BOLD PURPLE"%d", getpid());
-	ft_putchar_fd('\n', 1);
+	ft_printf(BOLD PURPLE"%d\n", getpid());
 	ft_putstr_color_fd(PINK, "Pending...\n", 1);
 }
 
@@ -54,8 +51,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pid_display();
-	sa.sa_sigaction = &sigusr_handler;
-	sa.sa_flags = 0;
+	sa.sa_sigaction = &sig_handler;
+	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	while (1)
 	{
