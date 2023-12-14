@@ -6,11 +6,11 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 11:07:10 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/13 20:44:16 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/14 15:10:47 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-############################## COLORS ##############################
+################################### COLORS #####################################
 
 RESET		:=	\e[0m
 BOLD		:=	\e[1m
@@ -30,8 +30,6 @@ PINK		:=	\033[38;2;255;182;193m
 CYAN		:=	\e[36m
 
 BRIGHT_BLACK	:=	\e[90m
-LIGHT_GRAY	:=	\e[37m
-BRIGHT_RED	:=	\e[91m
 BRIGHT_GREEN	:=	\e[92m
 BRIGHT_YELLOW	:=	\e[93m
 BRIGHT_BLUE	:=	\e[94m
@@ -39,7 +37,7 @@ BRIGHT_PURPLE	:=	\e[95m
 BRIGHT_CYAN	:=	\e[96m
 
 
-############################## BASICS ##############################
+################################### BASICS ###################################
 
 NAME		=	libft.a
 CC		=	cc
@@ -50,7 +48,7 @@ LIBC		=	ar -rcs
 RM		=	rm -rf
 
 
-############################# SOURCES #############################
+################################### SOURCES ###################################
 
 FT_FD_DIR	= 	ft_fd/
 FT_FD_FILES	= 	ft_putchar_fd.c \
@@ -123,7 +121,7 @@ FT_PRINTF_FILES	=	ft_printf.c \
 			ft_printstr.c
 
 
-####################### COMBINE DIRECTORIES AND FILES #######################
+######################## COMBINE DIRECTORIES AND FILES ########################
 
 SRC_DIR		= src/
 
@@ -152,17 +150,17 @@ OBJ_FOLDERS	= $(addprefix $(OBJ_DIR), $(FT_FD_DIR) \
 OBJ		= $(addprefix $(OBJ_DIR), $(OBJ_NAMES))
 
 
-################################### RULES ###################################
+#################################### RULES ####################################
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@mkdir -p $(dir $@)
-			@printf "$(ITAL)$(ORANGE)Compiling: $(RESET)$(ITAL)$<\n"
+			@printf "$(ITAL)$(GREEN)Compiling: $(RESET)$(ITAL)$<\n"
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 # link .o files to the library
 $(NAME):	$(OBJ)
 			@$(LIBC) $(NAME) $(OBJ)
-			@printf "\n$(RESET)$(PINK)[LIBFT]$(RESET), $(BLUE)[GET_NEXT_LINE]$(RESET), $(BRIGHT_PURPLE)[FT_PRINTF]$(RESET) successfully compiled!$(RESET)"
+			@printf "\n$(RESET)$(BOLD)$(PINK)[LIBFT]$(RESET), $(BOLD)$(BLUE)[GET_NEXT_LINE]$(RESET), $(BOLD)$(RED)[FT_PRINTF]$(RESET) successfully compiled!$(RESET)"
 
 all:		$(NAME)
 
@@ -170,12 +168,12 @@ san:		$(FSANITIZE)
 
 clean:
 			@$(RM) $(OBJ_DIR)
-			@printf "$(PINK)[LIBFT]: object files $(RESET)$(BOLD)\t=> cleaned! $(RESET)🐞\n\n"
+			@printf "$(BOLD)$(PINK)[LIBFT]: $(RESET)$(PINK)object files $(RESET)\t\t=> CLEANED! 🐞\n\n"
 
 fclean: 	clean
 			@$(RM) $(NAME)
 			@find . -name ".DS_Store" -delete
-			@printf "$(PURPLE)[LIBFT]: exec. files $(RESET)$(BOLD)\t=> cleaned! $(RESET)🦋\n\n"
+			@printf "$(BOLD)$(PURPLE)[LIBFT]: $(RESET)$(PURPLE)exec. files $(RESET)\t=> CLEANED! 🦋\n\n"
 
 re:		fclean all
 			@printf "\n\n✨ $(BOLD)$(YELLOW)Cleaning and rebuilding done! $(RESET)✨\n"

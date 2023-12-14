@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 17:29:34 by mcombeau          #+#    #+#             */
-/*   Updated: 2023/11/24 18:35:57 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:46:42 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define PINK			"\033[38;2;255;182;193m"
 # define CYAN			"\e[36m"
 # define WHITE			"\e[37m"
+# define MAGENTA		"\e[35m"
 
 # define BRIGHT_BLACK		"\e[90m"
 # define LIGHT_GRAY     	"\e[37m"

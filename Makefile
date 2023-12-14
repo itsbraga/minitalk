@@ -6,11 +6,11 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/13 21:07:19 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/14 15:13:36 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-############################## COLORS ##############################
+################################### COLORS #####################################
 
 RESET		:=	\e[0m
 BOLD		:=	\e[1m
@@ -30,8 +30,6 @@ PINK		:=	\033[38;2;255;182;193m
 CYAN		:=	\e[36m
 
 BRIGHT_BLACK	:=	\e[90m
-LIGHT_GRAY	:=	\e[37m
-BRIGHT_RED	:=	\e[91m
 BRIGHT_GREEN	:=	\e[92m
 BRIGHT_YELLOW	:=	\e[93m
 BRIGHT_BLUE	:=	\e[94m
@@ -39,7 +37,7 @@ BRIGHT_PURPLE	:=	\e[95m
 BRIGHT_CYAN	:=	\e[96m
 
 
-############################## BASICS ##############################
+################################### BASICS ####################################
 
 SERVER		=	server
 CLIENT		=	client
@@ -53,7 +51,7 @@ FSANITIZE	=	-fsanitize=address -g3
 RM		=	rm -rf
 
 
-############################## SOURCES ##############################
+################################### SOURCES ###################################
 
 CLIENT_FILE	=	client
 SRV_FILE	=	server
@@ -61,7 +59,7 @@ B_CLIENT_FILE	=	client_bonus
 B_SRV_FILE	=	server_bonus
 
 
-################### COMBINE DIRECTORIES AND FILES ###################
+######################## COMBINE DIRECTORIES AND FILES ########################
 
 SRC_DIR		=	src/
 
@@ -79,21 +77,21 @@ OBJ_B_CL	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_CLIENT_FILE)))
 OBJ_B_SRV	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRV_FILE)))
 
 
-############################### RULES ##############################
+#################################### RULES ####################################
 
 $(SERVER):	$(OBJ_SRV)
-			@printf "$(BLUE)[minitalk]:\t$(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]: $(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_SRV) libft.a -o $(SERVER)
-			@printf "$(BRIGHT_CYAN) server ready! $(RESET)👌🏼\n\n"
+			@printf "$(PINK) ./SERVER ready to launch! $(RESET)🦝\n\n"
 
 $(CLIENT):	$(OBJ_CL)
-			@printf "$(BLUE)[minitalk]:\t$(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]: $(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_CL) libft.a -o $(CLIENT)
-			@printf "$(BRIGHT_CYAN) client ready! $(RESET)👌🏼\n"
+			@printf "$(PINK) ./CLIENT ready to launch! $(RESET)🦙\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@mkdir -p $(dir $@)
-			@printf "$(ITAL)$(ORANGE)Compiling: $(RESET)$(ITAL)$<\n"
+			@printf "$(ITAL)$(YELLOW)Compiling: $(RESET)$(ITAL)$<\n"
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 build:
@@ -108,17 +106,17 @@ san:		$(FSANITIZE)
 clean:
 		@$(RM) $(OBJ_DIR)
 		@make clean -C $(LIBFT_PATH)
-		@printf "$(BRIGHT_GREEN)[minitalk]: object files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)😸\n\n"
+		@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]: $(RESET)$(CYAN)object files $(RESET)\t=> CLEANED! 😸\n\n"
 
 fclean:		clean
-			@$(RM) $(CLIENT) $(SERVER) $(BONUS_CL) $(BONUS_SRV)
+			@$(RM) $(SERVER) $(CLIENT) $(BONUS_SRV) $(BONUS_CL)
 			@$(RM) $(LIBFT_PATH)/libft.a
 			@$(RM) libft.a
 			@find . -name ".DS_Store" -delete
-			@printf "$(PURPLE)[LIBFT]: exec. files $(RESET)$(BOLD)\t\t=> successfully cleaned! $(RESET)🦋\n\n"
-			@printf "$(BLUE)[minitalk]: exec. files $(RESET)$(BOLD)\t=> successfully cleaned! $(RESET)🥸\n\n"
+			@printf "$(BOLD)$(PURPLE)[LIBFT]: $(RESET)$(PURPLE)exec. files $(RESET)\t\t=> CLEANED! 🦋\n\n"
+			@printf "$(BOLD)$(BRIGHT_PURPLE)[minitalk]: $(RESET)$(BRIGHT_PURPLE)exec. files $(RESET)\t=> CLEANED! 🌸\n\n"
 
-re:		fclean build all
+re:		fclean all build
 			@printf "\n\n✨ $(BOLD)$(YELLOW)Cleaning and rebuilding done! $(RESET)✨\n"
 
 norm:
@@ -126,17 +124,17 @@ norm:
 			@norminette $(SRC_DIR) $(INC) $(LIBFT_PATH) | grep -v Norme -B1 || true
 
 
-############################### BONUS ##############################
+################################### BONUS ###################################
 
 $(BONUS_SRV):	$(OBJ_B_SRV)
-			@printf "$(PINK)[minitalk BONUS]:\t$(RESET)"
+			@printf "$(PINK)[BONUS: minitalk]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_SRV) libft.a -o $(BONUS_SRV)
-			@printf "$(BRIGHT_CYAN) server ready to run the bonuses! $(RESET)👌🏼\n\n"
+			@printf "$(CYAN) ./SERVER_BONUS ready to launch! $(RESET)🌚\n\n"
 
 $(BONUS_CL):	$(OBJ_B_CL)
-			@printf "$(PINK)[minitalk BONUS]:\t$(RESET)"
+			@printf "$(PINK)[BONUS: minitalk]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_CL) libft.a -o $(BONUS_CL)
-			@printf "$(BRIGHT_CYAN) client ready to run the bonuses! $(RESET)👌🏼\n"
+			@printf "$(CYAN) ./CLIENT_BONUS ready to launch! $(RESET)🌝\n"
 
 bonus:
 		@make -C $(LIBFT_PATH)
