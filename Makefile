@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
+#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/14 16:12:01 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/15 00:30:34 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ CFLAGS		=	-Wall -Wextra -Werror -I
 INC		=	include/
 FSANITIZE	=	-fsanitize=address -g3
 RM		=	rm -rf
+MAKEFLAGS	+= --no-print-directory
 
 
 ################################### SOURCES ###################################
@@ -80,12 +81,12 @@ OBJ_B_SRV	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRV_FILE)))
 #################################### RULES ####################################
 
 $(SERVER):	$(OBJ_SRV)
-			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]: $(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_SRV) libft.a -o $(SERVER)
 			@printf "$(PINK) ./SERVER ready to launch! $(RESET)🦝\n\n"
 
 $(CLIENT):	$(OBJ_CL)
-			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]: $(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_CL) libft.a -o $(CLIENT)
 			@printf "$(PINK) ./CLIENT ready to launch! $(RESET)🦙\n"
 
@@ -95,7 +96,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 build:
-		@make -C $(LIBFT_PATH)
+		@make $(MAKEFLAGS) -C $(LIBFT_PATH)
 		@cp $(LIBFT_PATH)/libft.a .
 		@make all
 
@@ -127,17 +128,17 @@ norm:
 ################################### BONUS ###################################
 
 $(BONUS_SRV):	$(OBJ_B_SRV)
-			@printf "$(PINK)[BONUS: minitalk]:\t$(RESET)"
+			@printf "$(RESET)$(CYAN)[minitalk_bonus]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_SRV) libft.a -o $(BONUS_SRV)
-			@printf "$(CYAN) ./SERVER_BONUS ready to launch! $(RESET)🌚\n\n"
+			@printf "$(PINK) ./SERVER_BONUS ready to launch! $(RESET)🌚\n\n"
 
 $(BONUS_CL):	$(OBJ_B_CL)
-			@printf "$(PINK)[BONUS: minitalk]:\t$(RESET)"
+			@printf "$(RESET)$(CYAN)[minitalk_bonus]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_CL) libft.a -o $(BONUS_CL)
-			@printf "$(CYAN) ./CLIENT_BONUS ready to launch! $(RESET)🌝\n"
+			@printf "$(PINK) ./CLIENT_BONUS ready to launch! $(RESET)🌝\n"
 
 bonus:
-		@make -C $(LIBFT_PATH)
+		@make $(MAKEFLAGS) -C $(LIBFT_PATH)
 		@cp $(LIBFT_PATH)/libft.a .
 		@make allbonus
 

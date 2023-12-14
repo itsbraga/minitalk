@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/14 20:26:52 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/15 00:08:37 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	handler(int signal)
 {
-	static int	bit;
+	static int	bit = 0;
 	static char	c;
 
 	if (signal == SIGUSR1)
@@ -31,7 +31,7 @@ void	handler(int signal)
 void	pid_display(void)
 {
 	ft_putstr_color_fd(BOLD PURPLE, "PID ->	", 1);
-	ft_printf(BOLD PURPLE"%d\n", getpid());
+	ft_printf(BOLD PURPLE"%d\n\n", getpid());
 	ft_putstr_color_fd(PINK, "Pending...\n", 1);
 }
 

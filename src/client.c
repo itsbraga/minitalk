@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/14 16:17:01 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:12:36 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void	send_message(pid_t pid, char *msg)
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	int		i;
 
-	i = 0;
 	if (argc == 3 && ft_strisnum(argv[1]) && argv[2][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);

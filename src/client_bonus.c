@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/14 20:44:05 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:55:41 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,13 @@ int	main(int argc, char **argv)
 {
 	pid_t	pid;
 
-	// printf("client : %d\n", getpid());
 	signal(SIGUSR1, confirm_receipt);
-	signal(SIGUSR2, confirm_receipt);
 	if (argc == 3 && ft_strisnum(argv[1]) && argv[2][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid > 0)
 			send_message(pid, argv[2]);
-		else
+		else if (pid < 0)
 			ft_printf(BOLD RED"Wrong PID!\n");
 	}
 	else

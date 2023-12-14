@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 21:19:09 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/14 20:26:28 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:49:07 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	confirm_receipt(int signal);
 void	send_bits(pid_t pid, char c);
 void	send_message(pid_t pid, char *msg);
 void	sig_handler(int sig, siginfo_t *info, void __attribute__((unused))*s);
+// void	sig_handler(int sig, siginfo_t *info, void *context);
 void	pid_display(void);
 
 #endif
