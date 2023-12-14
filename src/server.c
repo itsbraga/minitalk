@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/14 15:24:11 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:16:51 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handler(int signal)
 {
 	static int	bit;
 	static char	c;
-	
+
 	if (signal == SIGUSR1)
 		c |= (1 << bit);
 	bit++;
