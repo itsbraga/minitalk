@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/13 21:38:23 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:11:25 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	send_bits(pid_t pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(200);
 		bit++;
 	}
 }
@@ -58,9 +58,8 @@ int	main(int argc, char **argv)
 		pid = ft_atoi(argv[1]);
 		if (pid > 0)
 		{
-			signal(SIGUSR1, confirm_receipt);
-			signal(SIGUSR2, confirm_receipt);
 			send_message(pid, argv[2]);
+			signal(SIGUSR1, confirm_receipt);
 		}
 		else
 			ft_printf(BOLD RED"Wrong PID!\n");

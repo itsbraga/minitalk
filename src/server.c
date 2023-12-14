@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/13 21:18:21 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:24:11 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int argc, char **argv)
 	{
 		signal(SIGUSR1, handler);
 		signal(SIGUSR2, handler);
-		pause();
 	}
 	return (0);
 }
