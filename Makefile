@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
+#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/15 00:30:34 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/16 18:08:31 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,12 +128,12 @@ norm:
 ################################### BONUS ###################################
 
 $(BONUS_SRV):	$(OBJ_B_SRV)
-			@printf "$(RESET)$(CYAN)[minitalk_bonus]:\t$(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk_bonus]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_SRV) libft.a -o $(BONUS_SRV)
 			@printf "$(PINK) ./SERVER_BONUS ready to launch! $(RESET)🌚\n\n"
 
 $(BONUS_CL):	$(OBJ_B_CL)
-			@printf "$(RESET)$(CYAN)[minitalk_bonus]:\t$(RESET)"
+			@printf "$(RESET)$(BOLD)$(CYAN)[minitalk_bonus]:\t$(RESET)"
 			@$(CC) $(CFLAGS) $(INC) $(OBJ_B_CL) libft.a -o $(BONUS_CL)
 			@printf "$(PINK) ./CLIENT_BONUS ready to launch! $(RESET)🌝\n"
 
