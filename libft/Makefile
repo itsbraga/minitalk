@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
+#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 11:07:10 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/15 00:28:36 by art3mis          ###   ########.fr        #
+#    Updated: 2023/12/16 17:44:17 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,18 +69,18 @@ FT_MEM_FILES	=	ft_memset.c \
 			ft_memcpy.c \
 			ft_memmove.c \
 			ft_memchr.c \
-			ft_memcmp.c
+			ft_memcmp.c \
+			ft_bzero.c \
+			ft_calloc.c
 			
 FT_STR_DIR	=	ft_str/
 FT_STR_FILES	=	ft_strlen.c \
-			ft_bzero.c \
 			ft_strlcpy.c \
 			ft_strlcat.c \
 			ft_strchr.c \
 			ft_strrchr.c \
 			ft_strncmp.c \
 			ft_strnstr.c \
-			ft_calloc.c \
 			ft_strdup.c \
 			ft_substr.c \
 			ft_strjoin.c \

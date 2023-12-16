@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 21:19:09 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/15 00:35:17 by art3mis          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:46:23 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
  * sys/types.h -> getpid
  * 
 */
+
+# define _XOPEN_SOURCE 500
 
 # include <signal.h>
 # include <stdlib.h>
