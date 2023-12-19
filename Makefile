@@ -6,7 +6,7 @@
 #    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/16 18:08:08 by annabrag         ###   ########.fr        #
+#    Updated: 2023/12/19 16:59:51 by annabrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ CFLAGS		=	-Wall -Wextra -Werror -I
 INC		=	include/
 FSANITIZE	=	-fsanitize=address -g3
 RM		=	rm -rf
-MAKEFLAGS	+= --no-print-directory
+MAKEFLAGS	+=	--no-print-directory
 
 
 ################################### SOURCES ###################################
