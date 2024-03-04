@@ -6,7 +6,7 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2023/12/15 00:08:37 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:06:31 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");
 		ft_printf(YELLOW"Try this instead: ./server\n");
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	pid_display();
 	while (1)
@@ -50,5 +50,5 @@ int	main(int argc, char **argv)
 		signal(SIGUSR1, handler);
 		signal(SIGUSR2, handler);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+         #
+#    By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:32:05 by annabrag          #+#    #+#              #
-#    Updated: 2023/12/19 16:59:51 by annabrag         ###   ########.fr        #
+#    Updated: 2024/01/31 16:22:31 by art3mis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,9 +138,9 @@ $(BONUS_CL):	$(OBJ_B_CL)
 			@printf "$(PINK) ./CLIENT_BONUS ready to launch! $(RESET)🌝\n"
 
 bonus:
-		@make $(MAKEFLAGS) -C $(LIBFT_PATH)
-		@cp $(LIBFT_PATH)/libft.a .
-		@make allbonus
+		make $(MAKEFLAGS) -C $(LIBFT_PATH)
+		cp $(LIBFT_PATH)/libft.a .
+		make allbonus
 
 allbonus:	$(BONUS_SRV) $(BONUS_CL)
 

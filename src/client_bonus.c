@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/16 18:01:13 by annabrag         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:26:42 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	send_bits(pid_t pid, char c)
 	bit = 0;
 	while (bit < 8)
 	{
-		if ((c & (1 << bit)) != 0)
+		if (c & (1 << bit))
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
@@ -45,29 +45,33 @@ void	send_message(pid_t pid, char *msg)
 		send_bits(pid, msg[i]);
 		i++;
 	}
-	send_bits(pid, '\n');
+	send_bits(pid, ' ');
 	send_bits(pid, '\0');
 }
 
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
+	int		i = 2;
 
-	signal(SIGUSR1, confirm_receipt);
-	if (argc == 3 && ft_strisnum(argv[1]) && argv[2][0] != '\0')
-	{
-		pid = ft_atoi(argv[1]);
-		if (pid > 0)
-			send_message(pid, argv[2]);
-		else if (pid < 0)
-			ft_printf(BOLD RED"Wrong PID!\n");
-	}
-	else
+	if (argc <= 2)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");
 		ft_printf(YELLOW
 			"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
-		return (1);
+		return (EXIT_FAILURE);
 	}
-	return (0);
+	while (i < argc && ft_strisnum(argv[1]) && argv[i][0] != '\0')
+	{
+		pid = ft_atoi(argv[1]);
+		if (pid > 0)
+		{
+			signal(SIGUSR1, confirm_receipt);
+			send_message(pid, argv[i++]);
+		}
+		else
+			ft_printf(BOLD RED"Wrong PID!\n");
+	}
+	send_bits(pid, '\n');
+	return (EXIT_SUCCESS);
 }

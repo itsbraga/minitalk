@@ -6,7 +6,7 @@
 /*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2023/12/15 00:08:30 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:24:04 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");
 		ft_printf(YELLOW"Try this instead: ./server\n");
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	pid_display();
 	sa.sa_sigaction = &sig_handler;
@@ -60,5 +60,5 @@ int	main(int argc, char **argv)
 		sigaction(SIGUSR1, &sa, NULL);
 		sigaction(SIGUSR2, &sa, NULL);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
