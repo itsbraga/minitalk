@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2024/03/04 19:24:04 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/03/06 00:58:31 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	sig_handler(int sig, siginfo_t *info, void __attribute__((unused))*s)
 	if (bit == 8)
 	{
 		if (c == '\0')
+		{
+			ft_printf("\n");
 			kill(pid, SIGUSR1);
+		}
 		ft_putchar_fd(c, 1);
 		bit = 0;
 		c = 0;

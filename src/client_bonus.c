@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2024/03/04 19:26:42 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/03/06 00:58:40 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	send_message(pid_t pid, char *msg)
 		i++;
 	}
 	send_bits(pid, ' ');
-	send_bits(pid, '\0');
 }
 
 int	main(int argc, char **argv)
@@ -61,17 +60,15 @@ int	main(int argc, char **argv)
 			"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
 		return (EXIT_FAILURE);
 	}
+	signal(SIGUSR1, confirm_receipt);
 	while (i < argc && ft_strisnum(argv[1]) && argv[i][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid > 0)
-		{
-			signal(SIGUSR1, confirm_receipt);
 			send_message(pid, argv[i++]);
-		}
 		else
 			ft_printf(BOLD RED"Wrong PID!\n");
 	}
-	send_bits(pid, '\n');
+	send_bits(pid, '\0');
 	return (EXIT_SUCCESS);
 }
