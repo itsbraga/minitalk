@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2024/03/04 19:04:18 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/03/06 05:50:33 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 			"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
 		return (EXIT_FAILURE);
 	}
-	while (i < argc && ft_strisnum(argv[1]) && argv[i][0] != '\0')
+	while (i < argc && argv[i][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid > 0)

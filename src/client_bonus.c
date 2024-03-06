@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2024/03/06 00:58:40 by annabrag         ###   ########.fr       */
+/*   Updated: 2024/03/06 05:51:58 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	signal(SIGUSR1, confirm_receipt);
-	while (i < argc && ft_strisnum(argv[1]) && argv[i][0] != '\0')
+	while (i < argc && argv[i][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid > 0)
