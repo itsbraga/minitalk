@@ -6,11 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:46:47 by art3mis           #+#    #+#             */
-/*   Updated: 2024/03/06 05:51:58 by annabrag         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:55:20 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk_bonus.h"
+#include "minitalk_bonus.h"
 
 void	confirm_receipt(int signal)
 {
@@ -51,8 +51,9 @@ void	send_message(pid_t pid, char *msg)
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	int		i = 2;
+	int		i;
 
+	i = 2;
 	if (argc <= 2)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");

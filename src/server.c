@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:01:32 by annabrag          #+#    #+#             */
-/*   Updated: 2024/03/04 19:06:31 by art3mis          ###   ########.fr       */
+/*   Updated: 2024/04/03 22:54:57 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 void	handler(int signal)
 {

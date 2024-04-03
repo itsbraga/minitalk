@@ -6,11 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:05 by art3mis           #+#    #+#             */
-/*   Updated: 2024/03/06 00:58:31 by annabrag         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:55:10 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk_bonus.h"
+#include "minitalk_bonus.h"
 
 void	sig_handler(int sig, siginfo_t *info, void __attribute__((unused))*s)
 {

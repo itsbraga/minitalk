@@ -6,11 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:52:25 by annabrag          #+#    #+#             */
-/*   Updated: 2024/03/06 05:50:33 by annabrag         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:55:32 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 void	send_bits(pid_t pid, char c)
 {
@@ -44,8 +44,9 @@ void	send_message(pid_t pid, char *msg)
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	int		i = 2;
+	int		i;
 
+	i = 2;
 	if (argc <= 2)
 	{
 		ft_printf(RED"Error: invalid arguments.\n");
